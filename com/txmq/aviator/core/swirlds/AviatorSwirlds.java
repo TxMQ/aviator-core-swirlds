@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import com.swirlds.platform.Platform;
+import com.swirlds.platform.Transaction;
 import com.txmq.aviator.core.Aviator;
 import com.txmq.aviator.core.AviatorStateBase;
 import com.txmq.aviator.core.IAviator;
@@ -52,7 +53,7 @@ public class AviatorSwirlds extends Aviator implements IAviator {
 
 		// If the transaction was not interrupted, submit it to the platform
 		if (transaction.isInterrupted() == false) {
-			platform.createTransaction(transaction.serialize());
+			platform.createTransaction(new Transaction(transaction.serialize()));
 			getPipelineRouter().notifySubmitted(transaction);
 		}
 	}
