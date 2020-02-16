@@ -25,6 +25,30 @@ public class AviatorSwirlds extends Aviator implements IAviator {
 	private static Platform platform;
 
 	/**
+	 * Initializes the consensus mechanism with an initial shared state.
+	 *
+	 * @param state Initialized state 
+	 * @return
+	 */
+	@Override
+	public void initState(AviatorStateBase state) {
+		//Swirlds handles its own state
+		return;
+	}
+	
+	/**
+	 * Initializes the consensus mechanism with an initial shared state from a class.
+	 *
+	 * @param state State class
+	 * @return
+	 */
+	@Override
+	public void initState(Class<? extends AviatorStateBase> stateClass) {
+		//swirlds handles its own state
+		return;
+	}
+	
+	/**
 	 * Initializes the platform from an aviator-config.json file located in the same
 	 * directory as the application runs in.  
 	 * 
@@ -35,7 +59,7 @@ public class AviatorSwirlds extends Aviator implements IAviator {
 	
 	public static synchronized void init(Platform platform) throws ReflectiveOperationException {
 		AviatorSwirlds.platform = platform;
-		Aviator.init(AviatorSwirlds.class);
+		Aviator.init(new AviatorSwirlds());
 	}
 
 	/**
