@@ -59,7 +59,7 @@ public class AviatorSwirlds extends Aviator implements IAviator {
 	
 	public static synchronized void init(Platform platform) throws ReflectiveOperationException {
 		AviatorSwirlds.platform = platform;
-		Aviator.init(AviatorSwirlds.class);
+		Aviator.init(new AviatorSwirlds());
 	}
 
 	/**
